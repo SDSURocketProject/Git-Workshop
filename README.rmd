@@ -1,0 +1,205 @@
+
+<p><img src="rocketlogo.png" alt="image" /></p>
+
+
+<h1 id="git-basics">Git Basics</h1>
+<h2 id="git-overview">Git Overview</h2>
+<p>Git is a Version Control System (VCS) designed to keep track of changes to files across multiple authors and machines. GitHub is a free public service that hosts the server-side copy (the “remote”) of all our projects (“repositories” or “repos”).</p>
+<p>Each user can copy (“clone”) the remote to their machine to have their own copy (their “local”) that they can edit however they like.</p>
+<p>Each repo has a main working tree (the “master” branch) and can have an infinite number of other “branches” that can be edited before their changes are “merged” back into master. Git will automatically check that a merge will not cause conflicts (such as multiple versions of the same file in the same place) and even offers tools to resolve such conflicts.</p>
+<h2 id="basic-steps-of-git">Basic Steps of Git</h2>
+<ol>
+<li><p>A branch is created<br />
+When created, a branch is identical to its base, which is usually Master.</p></li>
+<li><p>Files are created, changed, or deleted</p></li>
+<li><p>New changes (called “unstaged” can be made “staged” to mark them as part of the next commit</p></li>
+<li><p>Those changes are stored as commits<br />
+Each commit has an associated hash, generated from a SHA1 checksum of the contents of the commit.<br />
+Commits are referred to using the first 7 characters of the hash.<br />
+Each commit also has at least one line of text, to let you describe what was changed in that commit.</p></li>
+<li><p>Commits are then uploaded to the remote from your local<br />
+This process is called “pushing” your commit.<br />
+Pushing will upload any commits since your last push, effectively updating the remote to your local.</p></li>
+<li><p>Someone else can then download your commits to their local<br />
+This process is called “pulling” a commit<br />
+Pulling will download any commits since the last pull, effectively updating your local to the remote.</p></li>
+<li><p>When your changes are done, and are ready, you can “merge” your branch into Master via a Pull Request</p></li>
+</ol>
+<h2 id="basic-git-example">Basic Git Example</h2>
+<p>A basic example of the steps to create a branch, write a readme file, and push it to the branch. These commands are explained in more detail on the next page.</p>
+<p> </p>
+<p><code>git branch bhqq-documentation</code><code>         </code>- Create a new branch named “bhqq-documentation”<br />
+<code>git checkout bhqq-documentation</code><code>       </code>- Switch the working directory to the new branch<br />
+<code>vim README.rmd</code><code>                        </code>- Create and edit <code>README.rmd</code> (vim is a text editor)<br />
+<code>git add README.rmd</code><code>                    </code>- Stage <code>README.rmd</code> for commit<br />
+<code>git commit -m ‘Add README.rmd’</code><code>        </code>- Commit the change with the message ‘Add README.rmd’<br />
+<code>git pull</code><code>                              </code>- Fetch any commits, to prevent conflicts when you push<br />
+<code>git push</code><code>                              </code>- Push your commit to the remote<br />
+While there are commands to create and merge Pull Requests, it is much easier and preferred that it is done via the GitHub website.</p>
+
+<h2 id="basic-commands">Basic Commands</h2>
+<p><code>git pull</code><br />
+“Pull” changes from remote to local.<br />
+<code>git pull</code></p>
+<p><code>git push</code><br />
+“Push” changes from local to remote.<br />
+<br />
+<code>git push</code></p>
+<p><code>git add</code><br />
+Stage changes for a commit.<br />
+<code>git add &lt;filename&gt;</code></p>
+<p><code>git commit</code><br />
+Record staged commits into repository.<br />
+<code>git commit [-m &lt;commit message&gt;]</code></p>
+<p><code>git branch</code><br />
+List, create, and delete branches.<br />
+<code>git branch</code> will list all branches (and show an asterisk next to the current branch)<br />
+<code>git branch &lt;name&gt;</code> will create a new branch with the specified <code>name</code><br />
+<code>git branch -D &lt;name&gt;</code> will delete the branch with the specified <code>name</code></p>
+<p><code>git checkout</code><br />
+Switch to a branch.<br />
+<code>git checkout &lt;branch name&gt;</code></p>
+<p><code>git cherry-pick</code><br />
+Apply changes from an existing commit.<br />
+<code>git cherry-pick &lt;commit hash&gt;</code></p>
+<p><code>git clone</code><br />
+Clone a remote repository to the local machine.<br />
+<code>git clone &lt;url&gt; [target directory]</code></p>
+<p><code>git diff</code><br />
+Show the differences between two commits or a commit and the working tree<br />
+<code>git diff &lt;commit&gt; [commit]</code><br />
+If the second <code>commit</code> is not specified, it will compare against the most recent</p>
+<p><code>git status</code><br />
+Show working tree status (staged and unstaged changes, etc...).<br />
+<code>git status</code></p>
+<p><code>git log</code><br />
+Show a log of the working tree. Zack prefers it with these settings:<br />
+<code>git log –oneline –graph</code></p>
+<p><code>git reset</code><br />
+Resets the working tree to the specified state. Two most useful ways:<br />
+<code>git reset –soft [commit]</code> will reset you to <code>commit</code> and leave any changes ready to be staged<br />
+<code>git reset –hard [commit]</code> will discard any changes since <code>commit</code><br />
+If no <code>commit</code> is specified, the most recent will be assumed</p>
+
+<h2 id="graphical-representation">Graphical representation</h2>
+<p><img src="commit-merge.png" alt="image" style="width:15cm" /></p>
+<p>Events in the image above:</p>
+<ol>
+<li><p>Commit A is created and pushed</p></li>
+<li><p>The branch “develop” is created off Master at Point B</p></li>
+<li><p>Commit C is created and pushed on develop</p></li>
+<li><p>Commit D is created and pushed on Master<br />
+Note that a commit on one branch does not affect any other branch</p></li>
+<li><p>Commit E is created and pushed on develop</p></li>
+<li><p>Develop is merged into Master at point F</p></li>
+</ol>
+<p> </p>
+<p>As of point F, all commits on develop are on Master. Master has gained the new features, bugfixes, etc, that were created in develop without having to experience any bugs or errors during the development of commits C and F. This way, only functioning code is on Master.</p>
+
+<h1 id="contribution">Contribution</h1>
+<h2 id="contribution-procedure">Contribution Procedure</h2>
+<ol>
+<li><p>Find an issue on the GitHub page, find something to add, etc.</p></li>
+<li><p>Create a new branch from Master to address it<br />
+Your branch should be named appropriately.<br />
+For example, if you are adding documentation for an imaginary BHQQ system, your branch would be named <code>bhqq-documentation</code></p></li>
+<li><p>Commit your changes as you work<br />
+You should commit changes as you make them, not everything in one large block. This makes it easier to reference specific changes, especially during review.<br />
+Commit messages should be short and descriptive.</p></li>
+<li><p>File a Pull Request<br />
+The Pull Request title should only be a few words, <em>e.g.</em> <code>Add BHQQ Documentation</code>.<br />
+In the Pull Request message (or in the comments), reference the issue (if any) that you are addressing.<br />
+GitHub has an automatic system, where you only need to type the issue number (<em>e.g.</em> <code>#10</code>)</p></li>
+<li><p>Assign reviewers<br />
+A pull request into Master can only be accepted if the changes have been approved by at least one other person who has write access to Master.<br />
+You should assign someone who is related to the content of your Pull Request (<em>e.g.</em> the person who wrote the BHQQ system that you are writing documentation for)<br />
+More than one person can be assigned to review your Pull Request.</p></li>
+<li><p>Make changes<br />
+The reviewer may request changes to be made before they approve your Pull Request.<br />
+Your Pull Request will also need to be re-approved if you push more commits to your branch before it is merged.</p></li>
+<li><p>Pull Request Merged<br />
+Once all reviewers have approved your Pull Request, it can be merged into Master.</p></li>
+</ol>
+<h2 id="contribution-guidelines">Contribution Guidelines</h2>
+<ul>
+<li><p>Create a separate branch for each major change/feature.<br />
+This allows us to accept/reject on a feature-by-feature basis.</p></li>
+<li><p>The name of your PR should be short and descriptive.<br />
+If you cannot fit everything into a few words, you can expand on additional lines or by further explaining in the PR comments.</p></li>
+<li><p>Your PR <strong>must</strong> be reviewed by at least one other person.<br />
+This person should be someone related to the PR<br />
+(<em>e.g.</em> whoever wrote whatever it is that you are modifying).</p></li>
+<li><p>Commit names should be short, descriptive, and unique.<br />
+Pushing six commits in a row all named <code>code formatting</code> helps absolutely no one in understand what is being changed and where.<br />
+Additionally, a commit name such as <code>Changed README.md</code> is equally unhelpful. Be sure to include what changes were made. If too many changes were made, include the gist of it (e.g. “Restructure Section 2”) and include a more detailed description in the commit description.</p></li>
+</ul>
+
+<h2 id="how-to-improve-the-project">How to Improve the Project</h2>
+<p>In order to continually improve the project, it is important to take full advantage of the features of GitHub. This means using features such as Issues, Labels, and Milestones. These features are completely contained inside the GitHub web interface (or in their graphical client, if you choose to use it).</p>
+<h3 id="issues">Issues</h3>
+<p>Anyone can file an issue in the repo. An issue doesn’t necessarily need to be an “issue,” they are just used to keep track of any bugs, feature requests, suggested changes, and things of that sort that need to be addressed.<br />
+All issues, like all Pull Requests, have as associated number and name. For example, the most recent issue filed is titled <code>#9: Cross Platform Compatibility</code>. This issue can be referenced anywhere in the repo with just “#9” and GitHub will automatically create a hyperlink to that issue.<br />
+Issues have three other important fields besides the name and number:</p>
+<p>Assignees<br />
+You can assign specific people to work on any issue. It is best to assign the person most likely to resolve the issue. For example, an issue regarding a bug with the way GUI elements are being drawn on the client should be assigned to the person who wrote that section of the client code.</p>
+<p>Labels - Described in section <a href="#Labels" data-reference-type="ref" data-reference="Labels">2.3.2</a></p>
+<p>Milestones<br />
+You can associate an issue or Pull Request with a specific Milestone, such as “Convert from Sockets to MQTT” that would span many issues and Pull Requests, as a way to group them together.</p>
+<p>It is important that there are always plenty of issues to be resolved. If you notice a bug, want some new feature, or have an idea for how something could be changed or improved, this is how you let other people know. This is we make progress – by letting people know what progress needs to be made.</p>
+<h3 id="Labels">Labels</h3>
+<p>Labels are markers that can be applied to an issue or a Pull Request in order to help categorize, sort, and filter them. Multiple labels can be assigned to any issue or Pull Request. Labels are useful because they allow you to quickly get an idea of what an issue or Pull Request is, and they allow you to filter the list of issues and Pull Requests to only show those with certain labels.<br />
+New labels can be created or removed at any time. Currently, these exist:</p>
+<ul>
+<li><p>Suggestion</p></li>
+<li><p>Bug</p></li>
+<li><p>Documentation</p></li>
+<li><p>Duplicate</p></li>
+<li><p>Feature Request</p></li>
+<li><p>Help Wanted</p></li>
+<li><p>Question</p></li>
+</ul>
+<p>If you ever feel that there is no label suitable for your issue or Pull Request, you can always create a new one to fill the hole.</p>
+
+<h1 id="documentation">Documentation</h1>
+<h2 id="guidelines">Guidelines</h2>
+<ul>
+<li><p><strong>EVERYTHING</strong> must be documented</p>
+<ul>
+<li><p>All new features</p></li>
+<li><p>Any new dependencies</p></li>
+<li><p><em>Any</em> changes that would make current documentation incorrect</p></li>
+</ul></li>
+<li><p>General information (Dependencies, basic operation and descriptions) belong in README.rmd</p></li>
+<li><p>Specialized information (if any) about a file belong in &lt;filename&gt;.rmd</p></li>
+<li><p>All code must be thoroughly commented<br />
+You will probably not be here in a few years, and it would be best if the next generation can understand how everything works.</p></li>
+</ul>
+<h2 id="markdown-and-rmarkdown">Markdown and RMarkdown</h2>
+<p>Markdown (*.md) and RMarkdown (*.rmd) are simple markup languages designed to be compiled into HTML documents. RMarkdown, unlike vanilla Markdown, is capable of much more, including arbitrary LaTeX commands, as well as running basic R and Python code <em>inside</em> the text document.<br />
+<strong>RMarkdown Cheatsheet</strong></p>
+<p>More comprehensive cheatsheets for <span> <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">RMarkdown</a></span> and <span> <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Vanilla Markdown</a></span> available at these hyperlinks<br />
+<br />
+Some basics of RMarkdown:</p>
+<ul>
+<li><p><strong>Headings</strong> are done with pound signs:<br />
+<code>#Heading 1</code><br />
+<code>##Heading 2</code><br />
+<code>###Heading 3</code><br />
+And so on, to Heading 6</p></li>
+<li><p><strong>Hyperlinks</strong> are done with the format <code>[link](url)</code></p></li>
+<li><p><strong>Unordered Lists</strong> are done with asterisks, dashes, or pluses, interchangeably:<br />
+<code>- Bullet 1</code><br />
+<code>+ Bullet 2</code><br />
+<code>    </code><code>- Sublists are made with indentation with a tab or multiples of 2 spaces</code><br />
+<code>* Bullet 3</code></p></li>
+<li><p><strong>Ordered Lists</strong> are done same as unordered lists, just with numbers:<br />
+<code>1. Entry One</code><br />
+<code>5. Entry Two</code> <code>    </code>&lt; The number doesn’t matter, just that it’s a number<br />
+<code>    </code><code>1. You can also have ordered sublists, with their own numbering</code></p></li>
+<li><p><strong>Inline Code</strong> has graves around it: <code>`print(‘hello’)`</code><br />
+<code>```</code><br />
+<code>Block code is done with three graves above and below</code><br />
+<code>```</code></p></li>
+<li><p><strong>Emphasis</strong> is done with <em>*single asterisks*</em> or with <em>_single underlines_</em></p></li>
+<li><p><strong>Bold</strong> is done with <strong>**double asterisks**</strong> or with <strong>__double underlines__</strong></p></li>
+</ul>
