@@ -5,7 +5,7 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 
-\title{Avionics Contribution Basics}
+\title{SDSU Git Basics}
 \author{SDSU Rocket Project}
 
 \renewcommand{\contentsname}{Contents}
@@ -33,7 +33,7 @@ GitHub is a free public service that hosts the server-side copy (the ``remote'')
 Each user can copy (``clone'') the remote to their machine to have their own copy (their ``local'') that they can edit however they like.
 
 \noindent
-Each repo has a main working tree (the ``master'' branch) and can have an infinite number of other ``branches'' that can be edited before their changes are ``merged'' back into master.
+Each repo has a main working tree (usually the ``master'' branch) and can have an infinite number of other ``branches'' that can be edited before their changes are ``merged'' back into master.
 Git will automatically check that a merge will not cause conflicts (such as multiple versions of the same file in the same place) and even offers tools to resolve such conflicts.
 
 \subsection{Basic Steps of Git}
@@ -64,8 +64,8 @@ These commands are explained in more detail on the next page.
 \
 
 \noindent
-\texttt{git branch bhqq-documentation}\verb+         +- Create a new branch named ``bhqq-documentation''\\
-\texttt{git checkout bhqq-documentation}\verb+       +- Switch the working directory to the new branch\\
+\texttt{git branch mybranch}\verb+                   +- Create a new branch named ``mybranch''\\
+\texttt{git checkout mybranch}\verb+                 +- Switch the working directory to the new branch\\
 \texttt{vim README.rmd}\verb+                        +- Create and edit \texttt{README.rmd} (vim is a text editor)\\
 \texttt{git add README.rmd}\verb+                    +- Stage \texttt{README.rmd} for commit\\
 \texttt{git commit -m `Add README.rmd'}\verb+        +- Commit the change with the message `Add README.rmd'\\
@@ -81,21 +81,21 @@ While there are commands to create and merge Pull Requests, it is much easier an
 
 \begin{description}
 	\item \texttt{git pull}
-		\\``Pull'' changes from remote to local.
+		\\``Pull'' retrieves changes from the remote and applies them to the local
 		\\\texttt{git pull}
 	\item \texttt{git push}
-		\\``Push'' changes from local to remote.
+		\\``Push'' sends changes on the local to the remote
 		\\\underline{\textbf{ALWAYS PULL BEFORE PUSHING TO AVOID CONFLICTS}}
 		\\\texttt{git push}
 	\item \texttt{git add}
 		\\Stage changes for a commit.
 		\\\texttt{git add <filename>}
 	\item \texttt{git commit}
-		\\Record staged commits into repository.
+		\\Save staged changes into commit
 		\\\texttt{git commit [-m <commit message>]}
 	\item \texttt{git branch}
 		\\List, create, and delete branches.
-		\\\texttt{git branch} will list all branches (and show an asterisk next to the current branch)
+		\\\texttt{git branch -a} will list all branches (and show an asterisk next to the current branch)
 		\\\texttt{git branch <name>} will create a new branch with the specified \texttt{name}
 		\\\texttt{git branch -D <name>} will delete the branch with the specified \texttt{name}
 	\item \texttt{git checkout}
@@ -270,7 +270,7 @@ If you ever feel that there is no label suitable for your issue or Pull Request,
 
 \subsection{Markdown and RMarkdown}
 
-Markdown (*.md) and RMarkdown (*.rmd) are simple markup languages designed to be compiled into HTML documents. RMarkdown, unlike vanilla Markdown, is capable of much more, including arbitrary \LaTeX \ commands, as well as running basic R and Python code \textit{inside} the text document.
+Markdown (*.md) and RMarkdown (*.rmd) are simple markup languages designed to be compiled into HTML documents, and any Markdown/RMarkdown files inside the repository or in comments will be parsed and displayed as HTML. RMarkdown, unlike vanilla Markdown, is capable of much more, including arbitrary \LaTeX \ commands, as well as running basic R and Python code \textit{inside} the text document.
 \\
 
 \noindent
