@@ -28,28 +28,26 @@
 
 Git is a Version Control System (VCS) designed to keep track of changes to files across multiple authors and machines.
 GitHub is a free public service that hosts the server-side copy (the ``remote'') of all our projects (``repositories'' or ``repos'').
-
-\noindent
 Each user can copy (``clone'') the remote to their machine to have their own copy (their ``local'') that they can edit however they like.
-
-\noindent
 Each repo has a main working tree (usually the ``master'' branch) and can have an infinite number of other ``branches'' that can be edited before their changes are ``merged'' back into master.
 Git will automatically check that a merge will not cause conflicts (such as multiple versions of the same file in the same place) and even offers tools to resolve such conflicts.
 
-\subsection{Basic Steps of Git}
+\subsection{Basic Steps of Git within Rocket Project}
 
 \begin{enumerate}
 	\item A branch is created
-		\\When created, a branch is identical to its base, which is usually Master.
+		\\When created, a branch is identical to the branch it stems from.
 	\item Files are created, changed, or deleted
-	\item New changes (called ``unstaged'' can be made ``staged'' to mark them as part of the next commit
+	\item New changes are marked as ``unstaged,'' meaning they are not included for the next commit, and can be made ``staged.''
 	\item Those changes are stored as commits
+		\\A commit stores the changes in a file since the last commit that includes that file.
 		\\Each commit has an associated hash, generated from a SHA1 checksum of the contents of the commit.
 		\\Commits are referred to using the first 7 characters of the hash.
 		\\Each commit also has at least one line of text, to let you describe what was changed in that commit.
 	\item Commits are then uploaded to the remote from your local
 		\\This process is called ``pushing'' your commit.
 		\\Pushing will upload any commits since your last push, effectively updating the remote to your local.
+		\\Always pull before pushing. Someone else could have edited the same files since your last pull, so this helps to prevent conflicts on the remote.
 	\item Someone else can then download your commits to their local
 		\\This process is called ``pulling'' a commit
 		\\Pulling will download any commits since the last pull, effectively updating your local to the remote.
@@ -60,8 +58,6 @@ Git will automatically check that a merge will not cause conflicts (such as mult
 
 A basic example of the steps to create a branch, write a readme file, and push it to the branch.
 These commands are explained in more detail on the next page.
-
-\
 
 \noindent
 \texttt{git branch mybranch}\verb+                   +- Create a new branch named ``mybranch''\\
@@ -90,6 +86,7 @@ While there are commands to create and merge Pull Requests, it is much easier an
 	\item \texttt{git add}
 		\\Stage changes for a commit.
 		\\\texttt{git add <filename>}
+		\\Don't do \texttt{git add .} because you can accidentally add things you don't want
 	\item \texttt{git commit}
 		\\Save staged changes into commit
 		\\\texttt{git commit [-m <commit message>]}
@@ -109,8 +106,8 @@ While there are commands to create and merge Pull Requests, it is much easier an
 		\\\texttt{git clone <url> [target directory]}
 	\item \texttt{git diff}
 		\\Show the differences between two commits or a commit and the working tree
-		\\\texttt{git diff <commit> [commit]}
-		\\If the second \texttt{commit} is not specified, it will compare against the most recent
+		\\\texttt{git diff [commit]}
+		\\If the \texttt{commit} is not specified, it will compare against the most recent
 	\item \texttt{git status}
 		\\Show working tree status (staged and unstaged changes, etc...).
 		\\\texttt{git status}
@@ -118,9 +115,9 @@ While there are commands to create and merge Pull Requests, it is much easier an
 		\\Show a log of the working tree. Zack prefers it with these settings:
 		\\\texttt{git log --oneline --graph}
 	\item \texttt{git reset}
-		\\Resets the working tree to the specified state. Two most useful ways:
-		\\\texttt{git reset --soft [commit]} will reset you to \texttt{commit} and leave any changes ready to be staged
+		\\Resets the working tree to the specified state. Two useful ways of invoking:
 		\\\texttt{git reset --hard [commit]} will discard any changes since \texttt{commit}
+		\\\texttt{git reset <filename>} will unstage a file
 		\\If no \texttt{commit} is specified, the most recent will be assumed
 \end{description}
 
@@ -135,18 +132,19 @@ While there are commands to create and merge Pull Requests, it is much easier an
 Events in the image above:
 
 \begin{enumerate}
-	\item Commit A is created and pushed
-	\item The branch ``develop'' is created off Master at Point B
-	\item Commit C is created and pushed on develop
-	\item Commit D is created and pushed on Master
+	\item Commit A is created and pushed to master
+	\item Commit B is created and pushed to master
+	\item The branch ``develop'' is created from  master after Commit B
+	\item Commit C is created and pushed to develop
+	\item Commit D is created and pushed to Master
 		\\Note that a commit on one branch does not affect any other branch
-	\item Commit E is created and pushed on develop
-	\item Develop is merged into Master at point F
+	\item Commit E is created and pushed to develop
+	\item Develop is merged into Master as Commit F
 \end{enumerate}
 
 \
 
-As of point F, all commits on develop are on Master. Master has gained the new features, bugfixes, etc, that were created in develop without having to experience any bugs or errors during the development of commits C and F. This way, only functioning code is on Master.
+As of point F, all commits on develop are on Master. Master has gained the new features, bugfixes, etc, that were created in develop without having to experience any bugs or errors during the development of commits C and E. This way, only functioning code is on Master.
 
 \pagebreak
 
@@ -156,9 +154,10 @@ As of point F, all commits on develop are on Master. Master has gained the new f
 
 \begin{enumerate}
 	\item Find an issue on the GitHub page, find something to add, etc.
-	\item Create a new branch from Master to address it
+	\item Create a new branch from Master (or another appropriate branch) to address it
 		\\ Your branch should be named appropriately.
 		\\ For example, if you are adding documentation for an imaginary BHQQ system, your branch would be named \texttt{bhqq-documentation}
+		\\Alternatively, SemVer verion numbers can use used, such as in the FAR-MARS repo.
 	\item Commit your changes as you work
 		\\You should commit changes as you make them, not everything in one large block. This makes it easier to reference specific changes, especially during review.
 		\\Commit messages should be short and descriptive.
@@ -262,46 +261,8 @@ If you ever feel that there is no label suitable for your issue or Pull Request,
 			\item Any new dependencies
 			\item \textit{Any} changes that would make current documentation incorrect
 		\end{itemize}	
-	\item General information (Dependencies, basic operation and descriptions) belong in README.rmd
-	\item Specialized information (if any) about a file belong in \textless filename\textgreater.rmd
+	\item General information (Dependencies, basic operation and descriptions) belong in the repo's README
 	\item All code must be thoroughly commented
 		\\You will probably not be here in a few years, and it would be best if the next generation can understand how everything works.
 \end{itemize}
-
-\subsection{Markdown and RMarkdown}
-
-Markdown (*.md) and RMarkdown (*.rmd) are simple markup languages designed to be compiled into HTML documents, and any Markdown/RMarkdown files inside the repository or in comments will be parsed and displayed as HTML. RMarkdown, unlike vanilla Markdown, is capable of much more, including arbitrary \LaTeX \ commands, as well as running basic R and Python code \textit{inside} the text document.
-\\
-
-\noindent
-\textbf{RMarkdown Cheatsheet}
-
-More comprehensive cheatsheets for {\color{blue} \href{https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf}{RMarkdown}} and {\color{blue} \href{https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet}{Vanilla Markdown}} available at these hyperlinks
-\\
-\\Some basics of RMarkdown:
-
-\begin{itemize}
-	\item \textbf{Headings} are done with pound signs:
-		\\\texttt{\#Heading 1}
-		\\\texttt{\#\#Heading 2}
-		\\\texttt{\#\#\#Heading 3}
-		\\And so on, to Heading 6
-	\item \textbf{Hyperlinks} are done with the format \texttt{[link](url)}
-	\item \textbf{Unordered Lists} are done with asterisks, dashes, or pluses, interchangeably:
-		\\\texttt{- Bullet 1}
-		\\\texttt{+ Bullet 2}
-		\\\verb+    +\texttt{- Sublists are made with indentation with a tab or multiples of 2 spaces}
-		\\\texttt{* Bullet 3}
-	\item \textbf{Ordered Lists} are done same as unordered lists, just with numbers:
-		\\\texttt{1.~Entry One}
-		\\\texttt{5.~Entry Two} \verb+    +\textless \ The number doesn't matter, just that it's a number
-		\\\verb+    +\texttt{1.~You can also have ordered sublists, with their own numbering}
-	\item \textbf{Inline Code} has graves around it: \texttt{\`{}print(`hello')\`{}}
-		\\\texttt{\`{}\`{}\`{}}
-		\\\texttt{Block code is done with three graves above and below}
-		\\\texttt{\`{}\`{}\`{}}
-	\item \textbf{Emphasis} is done with \textit{*single asterisks*} or with \textit{\_single underlines\_}
-	\item \textbf{Bold} is done with \textbf{**double asterisks**} or with \textbf{\_\_double underlines\_\_}
-\end{itemize}
-
 \end{document}
