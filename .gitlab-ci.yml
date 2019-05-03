@@ -1,0 +1,16 @@
+stages:
+    - build
+    - test
+    
+build:
+    stage: build
+    script:
+        - touch info.txt
+    artifacts:
+        path:
+            - info.txt
+
+test:
+    stage: test
+    script:
+        - test -f info.txt
