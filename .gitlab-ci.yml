@@ -7,7 +7,7 @@ build:
     script:
         - touch info.txt
     artifacts:
-        path:
+        paths:
             - info.txt
 
 test:
