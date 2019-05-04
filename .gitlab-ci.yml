@@ -1,16 +1,12 @@
 stages:
-    - build
     - test
-    
-build:
-    stage: build
-    script:
-        - touch info.txt
-    artifacts:
-        paths:
-            - info.txt
 
-test:
+filename:
     stage: test
     script:
-        - test -f info.txt
+        - test -f $GITLAB_USER_LOGIN
+
+file_contents:
+    stage: test
+    script:
+        - test -s $GITLAB_USER_LOGIN
