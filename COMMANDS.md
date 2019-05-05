@@ -6,7 +6,7 @@ Syntax:
 
 `<text>` refers to a required parameter.
 
-`[text]` refers to an option parameter.
+`[text]` refers to an optional parameter.
 
 Paramter requirements can be nexted. ex: `[parameter 1 <parameter 2>]`
 
@@ -30,6 +30,8 @@ git push [-u origin] <branch>	                        # set upstream to origin a
 
 ```
 git add	<path>					        # stage file or directory at <path> for commit
+
+git add <path> [path] [path]                            # stage multiple files for commit
 ```
 
 ## git-commit
