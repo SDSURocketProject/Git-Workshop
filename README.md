@@ -1,6 +1,6 @@
 # Github Workshop
 
-This repo is an interactive guide to using Git with the SDSURP Gitlab Server, as well as a reference for git usage.
+This repo is an interactive guide to using Git with the SDSURP GitLab Server, as well as a reference for git usage.
 
 The CI/CD Automated system will run a series of checks to let you know if you completed the activity successfully
 
