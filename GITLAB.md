@@ -1,5 +1,15 @@
 # GitLab Website Usage
 
+Note about cloning from out GitLab instance:
+
+Because of heavy restrictions on networking on our server put on us by SDSU ITSO, our Rocket.Chat instance
+cannot coexist with the http availability of the GitLab instance. Due to this, the GitLab instance is only
+available via https. Zack is negotiating with the school to make the GitLab instance available via ssh.
+
+In order to clone a repo, you must use https. To do this, use the http clone url provided by the website,
+then change the http at the beginning to https. That change will be kept, and will only need to be made
+while cloning.
+
 ## Issues
 
 Anyone can file an issue to a repo. An issue doesn't necessarily need to be an "issue," they are just used

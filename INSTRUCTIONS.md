@@ -24,12 +24,13 @@ name will be the same as in the url.
 
 You can find the url my clicking on the blue clone button on the main page of a repo.
 It will list two URLs, one for http, and one for ssh. You can only use the ssh url if you have an ssh keypair
-associated with your account, so use the http url.
+associated with your account, so use the http url. As noted in GITLAB.md, don't forget to change the url to
+https.
 
 For this activity, run:
 
 ```
-git clone http://git.sdsurocketproject.org/avionics/Git-Workshop.git workshop
+git clone https://git.sdsurocketproject.org/avionics/Git-Workshop.git workshop
 ```
 
 This will clone the repo to a new directory named `workshop`. Go into it now.
