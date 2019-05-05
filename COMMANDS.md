@@ -30,6 +30,8 @@ git push [-u origin] <branch>	                        # set upstream to origin a
 
 ```
 git add	<path>					        # stage file or directory at <path> for commit
+
+git add <path> [path] [path]                            # stage multiple files for commit
 ```
 
 ## git-commit
