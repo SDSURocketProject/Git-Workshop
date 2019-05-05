@@ -8,7 +8,7 @@ These instructions will run through a series of steps:
 4. Staging the file for commit
 5. Creating a commit
 6. Pushing the commit
-7. Creating a pull request
+7. Creating a merge request
 
 ## Cloning a Repo
 
@@ -244,11 +244,11 @@ git push -u origin <branch name>
 If you are editing files that someone else may have edited, be sure to pull before you push, to avoid merge
 conflicts on the remote server.
 
-## Creating a Pull Request
+## Creating a Merge Request
 
 You're now done with the commandline portion of the activity.
 
-To create a pull request, follow these steps on the GitLab Website:
+To create a merge request, follow these steps on the GitLab Website:
 
 1. Click the "Merge Requests" button on the left side
 2. Click the "New Merge Request" button on the upper right
@@ -263,4 +263,4 @@ summary of the commits in the merge request
 9. Set the label(s). Select any labels that describe your merge request
 10. Ensure that "Delete Source Branch" and "Squash Commits" are unchecked
 11. Submit Merge Request
-12. Once all assignees have approved the merge request, a maintainer can merge the pull request
+12. Once all assignees have approved the merge request, a maintainer can merge the merge request
