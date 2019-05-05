@@ -44,7 +44,7 @@ To use it, simply list what you want to ignore, one entry per line. `*` acts as 
 Here is an example file for a C/C++ project:
 
 ```
-*.o				# ignore .o build objects
+*.o		        # ignore .o build objects
 *.csv			# ignore .csv log files
 my_binary		# ignore file named by_binary
 !my_binary/		# but not the directory named my_binary
