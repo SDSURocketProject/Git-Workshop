@@ -6,7 +6,7 @@ Syntax:
 
 `<text>` refers to a required parameter.
 
-`[text]` refers to an option parameter.
+`[text]` refers to an optional parameter.
 
 Paramter requirements can be nexted. ex: `[parameter 1 <parameter 2>]`
 
