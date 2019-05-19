@@ -51,6 +51,11 @@ Merge requests are an official way of requesting one branch to be merged into an
 to merge a branch into master, but should be used for all merges. Merge requests have the same four major
 fields as an issue.
 
+The description for a Merge Request should list all changes made in the merge as an itemized list, and a reference to
+the issue the requests addresses (if any). The description of the merge request is a good place to go into more detail
+about the changes than commit titles allow, without requiring the reviewers to individually view possibly hundreds
+of commit messages to see details of all changes.
+
 Once a merge request is created, all assignees must review the merge request. They can start discussions or
 create issues to address any problems with the merge request. If the maintainers disapprove of the merge, they
 can request changes or close the merge request. If all maintainers approve the merge request, then a maintainer
