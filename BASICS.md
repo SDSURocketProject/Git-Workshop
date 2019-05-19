@@ -32,11 +32,11 @@ What follows is a basic example of creating a new branch from master, creating a
 ```
 git branch mybranch master			# Create a new branch named "mybranch" from master
 git checkout mybranch				# Switch to the branch "mybranch"
-vim README.md						# Create and edit README.md (vim is a text editor)
-git pull							# Pull commits from master
-git add README.md					# Stage README.md for commit
-git commit -m 'Add README.md'		# Create a commit with a message
-git push							# Push the commit to the remote
+vim README.md			                # Create and edit README.md (vim is a text editor)
+git pull				        # Pull commits from master
+git add README.md				# Stage README.md for commit
+git commit -m 'Add README.md'		        # Create a commit with a message
+git push				        # Push the commit to the remote
 ```
 
 There are commands to merge branches, it is easier and preferred to do it via a Merge Request
