@@ -26,6 +26,8 @@ git push						# push commits to remote
 git push [-u origin] <branch>	                        # set upstream to origin and push to <branch>. Useful for first push on new branch
 ```
 
+It is good practice to pull before pushing, to avoid conflicts on the remote
+
 ## git-add
 
 ```
@@ -33,6 +35,10 @@ git add	<path>					        # stage file or directory at <path> for commit
 
 git add <path> [path] [path]                            # stage multiple files for commit
 ```
+
+In general, try to avoid adding paths such as `.` or other directories that contain many things. `git-add` will stage directories recursively,
+so it is easy to accidentally stage unwanted or unready files, such as build files or logs. This issue can sometimes be avoided using gitignore
+files, which are explained in more detail in EXTRAS.md
 
 ## git-commit
 
@@ -45,6 +51,10 @@ git commit [-S]					        # create a commit, and gpg sign it. Can only be used
 
 git commit [-S] [-m <message>]	                        # create a commit with a specified message, and gpg sign
 ```
+
+A commit requires at least one message. The first message can be thought of as the title of the commit, and should be short yet descriptive of the
+changes made. Additional messages are like the body of the commit, and should be used to explain in further detail what was changed (itemized lists
+are useful for this)
 
 ## git-branch
 
