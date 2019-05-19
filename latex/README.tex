@@ -51,17 +51,16 @@ Git will automatically check that a merge will not cause conflicts (such as mult
 	\item Someone else can then download your commits to their local
 		\\This process is called ``pulling'' a commit
 		\\Pulling will download any commits since the last pull, effectively updating your local to the remote.
-	\item When your changes are done, and are ready, you can ``merge'' your branch into Master via a Pull Request
+	\item When done, you can ``merge'' your branch into Master via a Pull Request
 \end{enumerate}
-
 \subsection{Basic Git Example}
 
-A basic example of the steps to create a branch, write a readme file, and push it to the branch.
-These commands are explained in more detail on the next page.
+A basic example of the steps to create a branch, write a readme file, and push it to the branch. 
+In particular, code examples contain placeholders (formatted in \textit{italics}) that must be replaced manually. \\
 
 \noindent
-\texttt{git branch mybranch}\verb+                   +- Create a new branch named ``mybranch''\\
-\texttt{git checkout mybranch}\verb+                 +- Switch the working directory to the new branch\\
+\texttt{git branch \textit{mybranch}}\verb+          +- Create a new branch named ``mybranch''\\
+\texttt{git checkout \textit{mybranch}}\verb+        +- Switch the working directory to the new branch\\
 \texttt{vim README.rmd}\verb+                        +- Create and edit \texttt{README.rmd} (vim is a text editor)\\
 \texttt{git add README.rmd}\verb+                    +- Stage \texttt{README.rmd} for commit\\
 \texttt{git commit -m `Add README.rmd'}\verb+        +- Commit the change with the message `Add README.rmd'\\
@@ -69,7 +68,7 @@ These commands are explained in more detail on the next page.
 \texttt{git push}\verb+                              +- Push your commit to the remote\\
 
 \noindent
-While there are commands to create and merge Pull Requests, it is much easier and preferred that it is done via the GitHub website.
+While there are commands to create and merge Pull Requests, it's preferred that it is done via GitHub.com.
 
 \pagebreak
 
