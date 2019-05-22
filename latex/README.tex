@@ -57,12 +57,11 @@ Git will automatically check that a merge will not cause conflicts (such as mult
 \subsection{Basic Git Example}
 
 A basic example of the steps to create a branch, write a readme file, and push it to the branch.
-These commands are explained in more detail on the next page.
-
+In particular, code examples may contain placeholders (formatted in textit{italics}) that must be replaced manually.
 \noindent
-\texttt{git branch mybranch}\verb+                   +- Create a new branch named ``mybranch''\\
-\texttt{git checkout mybranch}\verb+                 +- Switch the working directory to the new branch\\
-\texttt{vim README.rmd}\verb+                        +- Create and edit \texttt{README.rmd} (vim is a text editor)\\
+\texttt{git branch textit{mybranch}}\verb+           +- Create a new branch \\
+\texttt{git checkout textit{mybranch}}\verb+         +- Switch the working directory to the new branch\\
+\texttt{vim README.rmd}\verb+                        +- Create and edit "\texttt{README.rmd}" (vim is a text editor)\\
 \texttt{git add README.rmd}\verb+                    +- Stage \texttt{README.rmd} for commit\\
 \texttt{git commit -m `Add README.rmd'}\verb+        +- Commit the change with the message `Add README.rmd'\\
 \texttt{git pull}\verb+                              +- Fetch any commits, to prevent conflicts when you push\\
