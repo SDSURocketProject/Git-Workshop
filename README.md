@@ -1,5 +1,7 @@
 # Github Workshop
 
+**NOTE: The LaTeX PDF is now depreciated, in favor of the Markdown documents**
+
 This repo is an interactive guide to using Git with the SDSURP GitLab Server, as well as a reference for git usage.
 
 The CI/CD Automated system will run a series of checks to let you know if you completed the activity successfully
