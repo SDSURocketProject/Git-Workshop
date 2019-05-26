@@ -1,6 +1,6 @@
 # Github Workshop
 
-**NOTE: The LaTeX PDF is now depreciated, in favor of the Markdown documents**
+**NOTE: The LaTeX PDF is now deprecated, in favor of the Markdown documents**
 
 This repo is an interactive guide to using Git with the SDSURP GitLab Server, as well as a reference for git usage.
 
