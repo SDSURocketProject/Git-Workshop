@@ -43,7 +43,7 @@ There are commands to merge branches, it is easier and preferred to do it via a 
 
 ## Graphical Representation
 
-![merge](latex/commit-merge.png)
+![merge](images/commit-merge.png)
 
 Events in the image above:
 
