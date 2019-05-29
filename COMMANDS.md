@@ -16,7 +16,12 @@ In the above case, parameter 2 is required if parameter 1 is specified.
 
 ```
 git pull						# fetch commits from remote and merge them into local
+git pull --rebase                                       # rewind local commits, fetch and apply commits from remote, then reapply local commits
 ```
+
+Using the `--rebase` option is useful for preventing merge commits when pulling before pushing. You can also set this to be the default behaviour with this command:
+
+`git config --global branch.autosetuprebase always`
 
 ## git-push
 
